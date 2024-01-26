@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Book {
-    private String ISBN;
+    private String isbn;
     private String title;
     private String author;
     private String category;
