@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -30,5 +31,21 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookEntity> getBook() {
         return (List<BookEntity>) repository.findAll();
+    }
+
+    @Override
+    public boolean deleteBook(Long id) {
+        if(repository.existsById(id)){
+            repository.deleteById(id);
+            return  true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public Book getBookId(Long id) {
+       Optional<BookEntity> byId = repository.findById(id);
+       return mapper.map(byId, Book.class);
     }
 }
