@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class BookController {
 
-
    final BookService service;
    @PostMapping("/add")
 //   maintain your code for readability
@@ -23,12 +22,10 @@ public class BookController {
     public void addBook(@RequestBody Book book){
         service.addBook(book);
     }
-
     @GetMapping("/get")
     public Iterable<BookEntity> getBook(){
        return service.getBook();
     }
-
     @DeleteMapping("/{id}")
 //    public String deleteBook(@PathVariable Long id){
 //        if (service.deleteBook(id)) {
@@ -36,14 +33,12 @@ public class BookController {
 //        }else{
 //            return "not deleted";
 //        }
-
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> deleteBook(@PathVariable Long id){
        return service.deleteBook(id) ?
                ResponseEntity.ok("Deleted")  :
                ResponseEntity.notFound().build();
     }
-
     @GetMapping("search/{id}")
     public Book getBookId(@PathVariable Long id){
        return service.getBookId(id);
