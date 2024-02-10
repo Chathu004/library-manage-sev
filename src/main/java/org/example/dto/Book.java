@@ -10,6 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Book {
+    private Long id;
     private String isbn;
     private String title;
     private String author;
