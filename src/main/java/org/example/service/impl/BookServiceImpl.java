@@ -16,8 +16,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class BookServiceImpl implements BookService {
-
-    final BookRepository repository;
+    @Autowired
+    BookRepository repository;
 
     ModelMapper mapper;
     @Bean
